@@ -5,7 +5,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Splash from './screens/splash';
+import Splash from './components/splash/splash';
 import Signin from './screens/signin';
 import Signup from './screens/signup';
 import KaKaoLogin from './screens/kakaoLogin';
