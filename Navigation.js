@@ -5,7 +5,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Splash from './components/splash/splash';
+import Splash from './screens/Splash/Splash';
+import Login from './screens/Login/Login';
 import Signin from './screens/signin';
 import Signup from './screens/signup';
 import KaKaoLogin from './screens/kakaoLogin';
@@ -22,10 +23,9 @@ const TopTab = createMaterialTopTabNavigator();
 
 function Top1() {
   return (
-    <TopTab.Navigator screenOptions={{ tabBarActiveTintColor: 'purple' }}
-    >
-      <TopTab.Screen name="Top1 Screen1" component={Screen1}  />
-      <TopTab.Screen name="Top1 Screen2" component={Screen2}  />
+    <TopTab.Navigator screenOptions={{ tabBarActiveTintColor: 'purple' }}>
+      <TopTab.Screen name="Top1 Screen1" component={Screen1} />
+      <TopTab.Screen name="Top1 Screen2" component={Screen2} />
     </TopTab.Navigator>
   )
 }
@@ -38,6 +38,7 @@ function StackScreen() {
       initialRouteName="Splash"
     >
       <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}} />
+      <Stack.Screen name="Login" component={Login} options={{headerShown: false}} />
       <Stack.Screen name="Signin" component={Signin} options={{headerShown: false}} />
       <Stack.Screen name="KaKaoLogin" component={KaKaoLogin} options={{headerShown: false}} />
       <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}} />

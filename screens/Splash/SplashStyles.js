@@ -2,7 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    "backgroundColor": "#FFF",
+    flex: 1,    
+    backgroundColor: '#FFF',  
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  containerArea: {
     "display": "inline-flex",
     "paddingTop": 210,
     "paddingRight": 0,
