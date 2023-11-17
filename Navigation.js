@@ -7,8 +7,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import Splash from './screens/Splash/Splash';
 import Login from './screens/Login/Login';
-import Signin from './screens/signin';
-import Signup from './screens/signup';
+import SignUp from './screens/SignUp/SignUp';
+import Auth from './screens/Auth/Auth';
+import SignIn from './screens/signin';
 import KaKaoLogin from './screens/kakaoLogin';
 //import Home from './screens/home';
 
@@ -39,9 +40,10 @@ function StackScreen() {
     >
       <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}} />
       <Stack.Screen name="Login" component={Login} options={{headerShown: false}} />
-      <Stack.Screen name="Signin" component={Signin} options={{headerShown: false}} />
+      <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}} />
+      <Stack.Screen name="Auth" component={Auth} options={{headerShown: false}} />
+      <Stack.Screen name="SignIn" component={SignIn} options={{headerShown: false}} />
       <Stack.Screen name="KaKaoLogin" component={KaKaoLogin} options={{headerShown: false}} />
-      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}} />
       <Stack.Screen name="Home" component={BottomStack} options={{headerShown: false}} />
     </Stack.Navigator>
   );

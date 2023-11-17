@@ -7,7 +7,8 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
-  TouchableOpacity
+  TouchableOpacity,
+  Animated 
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import DropDown from "../../component/DropDown/DropDown";
@@ -17,7 +18,7 @@ import Kakao from "../../component/Svg/Kakao";
 import Naver from "../../component/Svg/Naver";
 import Google from "../../component/Svg/Google";
 import Apple from "../../component/Svg/Apple";
-import styles from "./LoginStyles.js";
+import styles from "./LoginStyles";
 
 const Login = () => {
   
@@ -31,12 +32,11 @@ const Login = () => {
             <StatusBar style='auto'/>
 
             {/* statusbar */}
-            <View style={styles.statusbar}>
-            </View>
+            <View style={styles.statusbar} />
 
             {/* 헤더 부분 */}
             <View style={styles.header}>
-              <TouchableOpacity style={styles.button}> 
+              <TouchableOpacity style={styles.button} onPress={(props) => { navigation.goBack(null) }}> 
                 <Ellipse />
                 <ArrowLeft/>
               </TouchableOpacity>
@@ -101,7 +101,7 @@ const Login = () => {
               <TouchableOpacity
                 onPress={() => {
                   navigation.removeListener
-                  navigation.navigate("Login", { screen: 'Login' })
+                  navigation.navigate("Home", { screen: 'Home' })
                 }}
                 style={styles.loginButton}
               >
@@ -111,8 +111,13 @@ const Login = () => {
                 <Text>
                   계정이 없으신가요?
                 </Text>
-                <TouchableOpacity>
-                  <Text style={styles.signInText}>
+                <TouchableOpacity 
+                  onPress={() => {
+                    navigation.removeListener
+                    navigation.navigate("SignUp", { screen: 'SignUp' })
+                  }}
+                >
+                  <Text style={styles.signUpText}>
                     에코히어로 가입하기
                   </Text>
                 </TouchableOpacity>
