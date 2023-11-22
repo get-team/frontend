@@ -10,7 +10,7 @@ const KaKaoLogin = () => {
     <View style={Styles.container}>      
       <Text style={Styles.HomeText}>카카오 화면</Text>
       <TouchableOpacity
-          onPress={() => navigation.navigate("Signup", { screen: 'Signup' })}
+          onPress={() => navigation.navigate("SignUp", { screen: 'SignUp' })}
           style={Styles.NextBottom}
         >
           <Text style={Styles.BottomText}>회원가입 화면으로</Text>

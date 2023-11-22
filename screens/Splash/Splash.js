@@ -1,7 +1,14 @@
 import React, { Fragment } from "react";
-import { View, Text, TouchableOpacity, SafeAreaView, StatusBar } from "react-native";
+import { 
+  View, 
+  Text, 
+  TouchableOpacity, 
+  SafeAreaView, 
+  StatusBar,
+  Animated 
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Logo from "../../component/Svg/Logo"
+import Logo from "../../component/Svg/Logo.js"
 import styles from "./SplashStyles"
 
 const Splash = () => {
@@ -34,14 +41,13 @@ const Splash = () => {
               }}
               style={styles.loginButton}
             >
-              <Text style={styles.loginButtonText}>로그인 화면으로</Text>
+              <Text style={styles.loginButtonText}>로그인</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              // onPress={() => navigation.navigate("Signin", { screen: 'Signin' })}
               onPress={() => {
                 navigation.removeListener
-                navigation.navigate("Signin", { screen: 'Signin' })
+                navigation.navigate("SignUp", { screen: 'SignUp' })
               }}
               style={styles.signInButton}
             >
