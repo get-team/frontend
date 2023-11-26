@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useRef, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,7 +8,6 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
-  Animated 
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Ellipse from "../../component/Svg/Ellipse";
@@ -18,6 +17,38 @@ import styles from "./AuthStyles"
 const Auth = () => {
 
   const navigation = useNavigation();
+  const inputRefs = Array(6).fill(0).map((_, i) => useRef(null));
+
+  const [authValues, setAuthValues] = useState(["", "", "", "", "", ""]);
+  const [countdown, setCountdown] = useState(300);
+
+  const handleInputChange = (index, value) => {
+    const newAuthValues = [...authValues];
+    newAuthValues[index] = value;
+    setAuthValues(newAuthValues);
+
+    if (index < 5 && value !== "") {
+      inputRefs[index + 1].current.focus();
+    }
+
+    if (index > 0 && value === "") {
+      inputRefs[index - 1].current.focus();
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountdown((prevCountdown) => Math.max(0, prevCountdown - 1));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+  };
 
   return (
     <Fragment>
@@ -50,16 +81,27 @@ const Auth = () => {
               </View>
 
               <View style={styles.authContainer}>
-                <TextInput keyboardType="number-pad" maxLength={1} style={styles.authBox} />
-                <TextInput keyboardType="number-pad" maxLength={1} style={styles.authBox} />
-                <TextInput keyboardType="number-pad" maxLength={1} style={styles.authBox} />
-                <TextInput keyboardType="number-pad" maxLength={1} style={styles.authBox} />
-                <TextInput keyboardType="number-pad" maxLength={1} style={styles.authBox} />
-                <TextInput keyboardType="number-pad" maxLength={1} style={styles.authBox} />
+                {authValues.map((value, index) => (
+                <TextInput
+                key={index}
+                keyboardType="number-pad"
+                maxLength={1}
+                style={[
+                  styles.authBox,
+                  {
+                    borderColor: value ? '#D84F00' : '#5E5E5E',
+                  },
+                ]}
+                value={value}
+                onChangeText={(text) => handleInputChange(index, text)}
+                ref={inputRefs[index]}
+                caretHidden={true}
+              />
+              ))}
               </View>
 
               <Text style={styles.authText}>
-                코드를 받지 않았어요
+                코드를 받지 않았어요 ({formatTime(countdown)})
               </Text>
 
               <TouchableOpacity

@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: '#D84F00',
   },
   authText:{
     paddingTop:24,
